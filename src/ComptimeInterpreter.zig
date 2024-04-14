@@ -204,7 +204,7 @@ pub fn interpret(
                 .fields = .{},
                 .owner_decl = .none, // TODO
                 .namespace = container_namespace,
-                .layout = .auto, // TODO
+                .layout = .Auto, // TODO
                 .backing_int_ty = .none, // TODO
                 .status = .none, // TODO
             });
@@ -879,7 +879,7 @@ pub fn interpret(
                         .fields = .{},
                         .owner_decl = .none, // TODO
                         .namespace = .none,
-                        .layout = .auto,
+                        .layout = .Auto,
                         .backing_int_ty = .none,
                         .status = .none,
                     });

@@ -993,7 +993,7 @@ pub const Struct = struct {
     fields: std.AutoArrayHashMapUnmanaged(String, Field),
     owner_decl: Decl.OptionalIndex,
     namespace: NamespaceIndex,
-    layout: std.builtin.Type.ContainerLayout = .auto,
+    layout: std.builtin.Type.ContainerLayout = .Auto,
     backing_int_ty: InternPool.Index,
     status: FieldStatus,
 
@@ -1021,7 +1021,7 @@ pub const Union = struct {
     tag_type: InternPool.Index,
     fields: std.AutoArrayHashMapUnmanaged(String, Field),
     namespace: NamespaceIndex,
-    layout: std.builtin.Type.ContainerLayout = .auto,
+    layout: std.builtin.Type.ContainerLayout = .Auto,
     status: FieldStatus,
 
     pub const Field = struct {
@@ -3269,7 +3269,7 @@ pub fn intInfo(ip: *InternPool, ty: Index, target: std.Target) std.builtin.Type.
             },
             .struct_type => |struct_index| {
                 const struct_info = ip.getStruct(struct_index);
-                assert(struct_info.layout == .@"packed");
+                assert(struct_info.layout == .Packed);
                 index = struct_info.backing_int_ty;
             },
             // TODO revisit this when error sets support custom int types (comment taken from zig codebase)
@@ -4483,7 +4483,7 @@ test "struct value" {
         .fields = .{},
         .owner_decl = .none,
         .namespace = .none,
-        .layout = .auto,
+        .layout = .Auto,
         .backing_int_ty = .none,
         .status = .none,
     });
@@ -4561,7 +4561,7 @@ test "union value" {
         .tag_type = .none,
         .fields = .{},
         .namespace = .none,
-        .layout = .auto,
+        .layout = .Auto,
         .status = .none,
     });
     const union_type = try ip.get(gpa, .{ .union_type = union_index });
